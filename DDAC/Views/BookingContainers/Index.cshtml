@@ -1,0 +1,63 @@
+﻿@model IEnumerable<DDAC.Models.BookingContainer>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Booking's Container</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.Booking.BookingID)
+        </th>
+        <th>
+            Source
+        </th>
+        <th>
+            Destination
+        </th>
+        <th>
+            Date Time
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Container.ContainerID)
+        </th>
+        <th>
+            Load
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.Booking.BookingID)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Booking.SourceDock.Name)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Booking.DestinationDock.Name)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Booking.DepartureTime)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Container.ContainerID)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Container.TotalLoad)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id = item.BookingContainerID }) |
+            @Html.ActionLink("Details", "Details", new { id = item.BookingContainerID }) |
+            @Html.ActionLink("Delete", "Delete", new { id = item.BookingContainerID })
+        </td>
+    </tr>
+}
+
+</table>
